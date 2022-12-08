@@ -5,10 +5,15 @@ using namespace std;
 
 int main(int argc, char** argv){
 	srand(time(NULL));
+//	double rho = 0.5; //FIX
+//	double b = 1.2;
+//	double lambd = 0.7;
+
+
 	double alpha = 0.1;
-	double rho = 0.5; //FIX
-	double b = 1.2;
-	double lambd = 0.7;
+	double rho = 0.95; //FIX
+	double b = 12.0;
+	double lambd = 0.05;
 	double delt = 0.1; //FIX
 	double m = 0.2;
 
@@ -16,11 +21,11 @@ int main(int argc, char** argv){
 	printf("Now doing QuasiPGG with (a,b,l,d) = (%f,%f,%f,%f)\n",
 		alpha,b,lambd,delt);
 
-	for(double lambd = 0; lambd < 1; lambd += 0.05 ){
+	for(double lambd = 0; lambd < 0.2001; lambd += 0.01 ){
 		char file_n[100];
-		sprintf(file_n,"b_%04d_A_%4d_m_%04d_L_%4d.dat", 
-			(int)((b + 0.000001) * 100), (int)((alpha + 0.000001) * 100),
-			(int)((m + 0.000001) * 100), (int)((lambd + 0.000001) * 100));
+		sprintf(file_n,"b_%04d_A_%04d_m_%04d_L_%04d.dat", 
+			(int)((b + 0.000001) * 100),  (int)((alpha + 0.000001) * 1000),
+			(int)((m + 0.000001) * 1000), (int)((lambd + 0.000001) * 1000));
 
 		FILE *file;
   		file = fopen(file_n, "r");

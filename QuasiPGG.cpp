@@ -89,7 +89,7 @@ int QuasiPGG::game(bool ptf){
 	if(ptf){
 		char path[100];
 		sprintf(path,"b_%04d_A_%04d_m_%04d_L_%04d.dat", 
-			(int)((b + 0.000001) * 1000), (int)((alpha + 0.000001) * 1000),
+			(int)((b + 0.000001) * 100), (int)((alpha + 0.000001) * 1000),
 			(int)((m + 0.000001) * 1000), (int)((lambd + 0.000001) * 1000));
 		printf("Now file:%s\n",path);
 		file = fopen(path,"a+");
