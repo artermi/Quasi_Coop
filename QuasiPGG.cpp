@@ -99,10 +99,15 @@ int QuasiPGG::game(bool ptf){
 	}
 
 	double rate[3] = {0.0, 0.0, 0.0};
-	int iter = 10001;
+	double previous[5][3];
+	int iter = 20001;
 	int gap = 500;
-	for(int i = 0; i < iter; i++){
+	bool stop_all_0 = true;
 
+	for(int i = 0; i < iter; i++){
+		bool stop_all = true;
+
+ 
 		if(i % gap == 0){
 			for (int j = 0; j < 3; ++j)
 				rate[j] = (double) Cate_Player[j] / LL;
@@ -110,15 +115,33 @@ int QuasiPGG::game(bool ptf){
 			if(ptf)
 				fprintf(file, "%06d %.4f %.4f %.4f\n", i, rate[0],rate[1],rate[2]);
 			printf( "%06d %.4f %.4f %.4f\n", i, rate[0],rate[1],rate[2]);
-		
+
+			double pert = 0.05;
+			for(int j = 1; j < 5; j++)
+				for(int k = 0; k < 3; k ++)
+					previous[j-1][k] = previous[j][k];
+			for(int k = 0; k < 3; k++)
+				previous[4][k] = rate[k];
+
+			if(i > iter/2){
+				stop_all_0 = true;
+
+				for(int j = 0; j < 5; j++)
+					for(int k = 0; k < 3; k ++)
+						if(abs(rate[k] - previous[j][k]) > pert){
+							stop_all_0 = false;
+						}
+			}
+			else{
+				stop_all_0 = false;
+			}
 		}
-		bool stop_all = true;
 
 		for (int j = 0; j < 3; j++)
 			if(rate[j] - 0.00000001 >= 0 && rate[j] + 0.00000001 <= 1)
 				stop_all = false;
 
-		if(stop_all)
+		if(stop_all || stop_all_0)
 			continue;
 
 		for(int j = 0; j < LL; j++){
