@@ -2,10 +2,10 @@
 #include <unistd.h>
 using namespace std;
 
-int do_once(a,b,l,m,d,r){
+int do_once(double a,double b,double l,double m,double d,double r){
 
 	char file_n[100];
-	sprintf(file_n,"A_%04d_b_%4d_l_%04d_m_%4d_d_%4d_r_%4d.dat", 
+	sprintf(file_n,"A_%04d_b_%04d_l_%04d_m_%04d_d_%04d_r_%04d.dat", 
 		(int)((a + 0.000001) * 100), (int)((b + 0.000001) * 100),
 		(int)((l + 0.000001) * 100), (int)((m + 0.000001) * 100),
 		(int)((d + 0.000001) * 100), (int)((r + 0.000001) * 100));
@@ -17,7 +17,7 @@ int do_once(a,b,l,m,d,r){
 		fclose(file);
 		printf("file:'%s' exists\n",file_n);
 		usleep(100000);
-		continue;
+		return 0;
 	}
 
 	file = fopen(file_n, "w");
@@ -33,7 +33,7 @@ int do_once(a,b,l,m,d,r){
 int main(int argc, char** argv){
 	srand(time(NULL));
 
-	double gap = 0.1
+	double gap = 0.1;
 
 
 	for(double b = 1; b < 2.01; b += gap ){
@@ -42,7 +42,7 @@ int main(int argc, char** argv){
 				for(double m = 0; m < 1; m += gap){
 					for (double d = 0; d < 1; d += gap){
 						for (double r = 0; r < 1; r += gap){
-							do_once(a,b,l,m,d,r)
+							do_once(a,b,l,m,d,r);
 						}
 					}
 				}

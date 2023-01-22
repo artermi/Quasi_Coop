@@ -89,7 +89,7 @@ int QuasiPGG::game(bool ptf){
 	if(ptf){
 		char path[100];
 		
-		sprintf(path,"A_%04d_b_%4d_l_%04d_m_%4d_d_%4d_r_%4d.dat", 
+		sprintf(path,"A_%04d_b_%04d_l_%04d_m_%04d_d_%04d_r_%04d.dat", 
 		(int)((alpha + 0.000001) * 100), (int)((b + 0.000001) * 100),
 		(int)((lambd + 0.000001) * 100), (int)((m + 0.000001) * 100),
 		(int)((delt + 0.000001) * 100), (int)((rho + 0.000001) * 100));
