@@ -5,10 +5,10 @@ using namespace std;
 
 int main(int argc, char** argv){
 	srand(time(NULL));
-	double alpha = 0.1;
-	double rho = 0.95; //FIX
-	double b = 12.0;
-	double lambd = 0.05;
+	double alpha = 0.3;
+	double rho = 0.5; //FIX
+	double b = 1.1;
+	double lambd = 0.7;
 	double delt = 0.1; //FIX
 	double m = 0.2;
 

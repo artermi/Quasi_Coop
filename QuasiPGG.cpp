@@ -51,7 +51,7 @@ QuasiPGG::~QuasiPGG(){
 }
 
 
-double QuasiPGG::unit_game(const int cent){
+double QuasiPGG::unit_game(const int cent,const int target){
 
 	double idivd[3] = {0.0,0.0,0.0};
 	idivd[Strategy[cent]] += 1;
@@ -62,10 +62,10 @@ double QuasiPGG::unit_game(const int cent){
 		idivd[Strategy[person]] += 1;
 	}
 
-	if(Strategy[cent] == 0)
+	if(Strategy[target] == 0)
 		return ( b * idivd[1] + (b - lambd) * idivd[2]) / double(gs+1);
 
-	if(Strategy[cent] == 1)
+	if(Strategy[target] == 1)
 		return ( idivd[1] + (1-alpha) * idivd[2] - delt * idivd[0] )/ double(gs+1);
 
 	// if Strategy is 2, QC
@@ -75,9 +75,9 @@ double QuasiPGG::unit_game(const int cent){
 
 
 double QuasiPGG::centre_game(const int cent){
-	double profit = unit_game(cent);
+	double profit = unit_game(cent,cent);
 	for(int i = 0; i < 4; i++){
-		profit += unit_game(Neighbour[cent][i]);
+		profit += unit_game(Neighbour[cent][i],cent);
 	}
 
 	return profit;
@@ -88,9 +88,12 @@ int QuasiPGG::game(bool ptf){
 	FILE *file;
 	if(ptf){
 		char path[100];
-		sprintf(path,"b_%04d_A_%04d_m_%04d_L_%04d.dat", 
-			(int)((b + 0.000001) * 100), (int)((alpha + 0.000001) * 1000),
-			(int)((m + 0.000001) * 1000), (int)((lambd + 0.000001) * 1000));
+		
+		sprintf(path,"A_%04d_b_%4d_l_%04d_m_%4d_d_%4d_r_%4d.dat", 
+		(int)((alpha + 0.000001) * 100), (int)((b + 0.000001) * 100),
+		(int)((lambd + 0.000001) * 100), (int)((m + 0.000001) * 100),
+		(int)((delt + 0.000001) * 100), (int)((rho + 0.000001) * 100));
+
 		printf("Now file:%s\n",path);
 		file = fopen(path,"a+");
 	}

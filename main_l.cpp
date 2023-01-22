@@ -11,9 +11,9 @@ int main(int argc, char** argv){
 
 
 	double alpha = 0.1;
-	double rho = 0.95; //FIX
-	double b = 12.0;
-	double lambd = 0.05;
+	double rho = 0.5; //FIX
+	double b = 1.53;
+	double lambd = 0.7;
 	double delt = 0.1; //FIX
 	double m = 0.2;
 
@@ -21,7 +21,7 @@ int main(int argc, char** argv){
 	printf("Now doing QuasiPGG with (a,b,l,d) = (%f,%f,%f,%f)\n",
 		alpha,b,lambd,delt);
 
-	for(double lambd = 0; lambd < 0.2001; lambd += 0.01 ){
+	for(double lambd = 0; lambd < 1.001; lambd += 0.05 ){
 		char file_n[100];
 		sprintf(file_n,"b_%04d_A_%04d_m_%04d_L_%04d.dat", 
 			(int)((b + 0.000001) * 100),  (int)((alpha + 0.000001) * 1000),

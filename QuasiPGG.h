@@ -32,7 +32,7 @@ public:
 	QuasiPGG(const double A,const double R, const double B,
 		const double Lam, const double D, const double M);
 	~QuasiPGG();
-	double unit_game(const int cent);
+	double unit_game(const int cent,const int target);
 	double centre_game(const int cent);
 	int game(bool ptf);
 };
