@@ -116,7 +116,7 @@ int QuasiPGG::game(bool ptf){
 				fprintf(file, "%06d %.4f %.4f %.4f\n", i, rate[0],rate[1],rate[2]);
 			printf( "%06d %.4f %.4f %.4f\n", i, rate[0],rate[1],rate[2]);
 
-			double pert = 0.05;
+			double pert = 0.02;
 			for(int j = 1; j < 5; j++)
 				for(int k = 0; k < 3; k ++)
 					previous[j-1][k] = previous[j][k];
