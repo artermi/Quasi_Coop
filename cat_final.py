@@ -14,12 +14,12 @@ for root,dirs,files in sorted(os.walk(d_name,topdown = False)):
 		if name.find('.dat') >= 0:
 			# A_0100_b_0200_l_0100_m_0100_d_0100_r_0100.dat
 			# 0123456789|123456789|123456789|123456789|
-			a = float(name[ 2: 6])/1000
-			b = float(name[ 9:13])/1000
-			l = float(name[16:20])/1000
-			m = float(name[23:27])/1000
-			d = float(name[30:34])/1000
-			r = float(name[37:41])/1000
+			a = float(name[ 2: 6])/100
+			b = float(name[ 9:13])/100
+			l = float(name[16:20])/100
+			m = float(name[23:27])/100
+			d = float(name[30:34])/100
+			r = float(name[37:41])/100
 
 			with open(os.path.join(root, name)) as file:
 				for last_line in file:
