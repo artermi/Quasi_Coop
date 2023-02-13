@@ -30,7 +30,7 @@ public:
 	int **Neighbour;
 
 	QuasiPGG(const double A,const double R, const double B,
-		const double Lam, const double D, const double M);
+		const double Lam, const double D, const double M, bool Two = false);
 	~QuasiPGG();
 	double unit_game(const int cent,const int target);
 	double centre_game(const int cent);

@@ -2,7 +2,7 @@
 using namespace std;
 
 QuasiPGG::QuasiPGG(const double A,const double R, const double B,
-	const double Lam, const double D, const double M){
+	const double Lam, const double D, const double M,bool Two = false){
 
 	alpha = A;
 	b = B;
@@ -18,12 +18,21 @@ QuasiPGG::QuasiPGG(const double A,const double R, const double B,
 	for(int i = 0; i < 3; i++)
 		Cate_Player[i] = 0;
 
-	for(int i = 0; i < LL; i++){
-		Strategy[i] = rand() % 4;
-		if(Strategy[i] == 3)
-			Strategy[i] = 0;
+	if(Two){
+		for(int i = 0; i < LL; i++){
+			Strategy[i] = rand() % 2;
 
-		Cate_Player[Strategy[i]] ++;
+			Cate_Player[Strategy[i]] ++;
+		}		
+	}
+	else{
+		for(int i = 0; i < LL; i++){
+			Strategy[i] = rand() % 4;
+			if(Strategy[i] == 3)
+				Strategy[i] = 0;
+
+			Cate_Player[Strategy[i]] ++;
+		}
 	}
 
 
