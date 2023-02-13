@@ -2,7 +2,7 @@
 using namespace std;
 
 QuasiPGG::QuasiPGG(const double A,const double R, const double B,
-	const double Lam, const double D, const double M,bool Two = false){
+	const double Lam, const double D, const double M,bool Two){
 
 	alpha = A;
 	b = B;
