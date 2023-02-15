@@ -2,7 +2,7 @@
 using namespace std;
 
 QuasiPGG::QuasiPGG(const double A,const double R, const double B,
-	const double Lam, const double D, const double M,bool Two){
+	const double Lam, const double D, const double M,bool Two, bool Grid){
 
 	alpha = A;
 	b = B;
@@ -10,6 +10,7 @@ QuasiPGG::QuasiPGG(const double A,const double R, const double B,
 	lambd = Lam;
 	delt = D;
 	m = M;
+	grid = Grid;
 
 	Strategy = new int[LL];
 
@@ -152,6 +153,10 @@ int QuasiPGG::game(bool ptf){
 
 		if(stop_all || stop_all_0)
 			continue;
+
+		if(grid && i % gap == 0){
+			1+1; //not implement yet
+		}
 
 		for(int j = 0; j < LL; j++){
 			int x = rand() % LL;

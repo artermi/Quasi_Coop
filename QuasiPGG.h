@@ -22,6 +22,7 @@ public:
 	double lambd;
 	double delt;
 	double m;
+	bool grid;
 	char dir_name[100];
 
 	int Cate_Player[3];
@@ -30,7 +31,8 @@ public:
 	int **Neighbour;
 
 	QuasiPGG(const double A,const double R, const double B,
-		const double Lam, const double D, const double M, bool Two = false);
+		const double Lam, const double D, const double M,
+		bool Two = false, bool Grid = false);
 	~QuasiPGG();
 	double unit_game(const int cent,const int target);
 	double centre_game(const int cent);
