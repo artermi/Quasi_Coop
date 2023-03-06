@@ -61,33 +61,12 @@ QuasiPGG::~QuasiPGG(){
 }
 
 
-double QuasiPGG::unit_game(const int cent,const int target){
-
-	double idivd[3] = {0.0,0.0,0.0};
-	idivd[Strategy[cent]] += 1;
-
-	int gs = 4;
-	for(int i = 0; i < gs; i++){
-		int person = Neighbour[cent][i];
-		idivd[Strategy[person]] += 1;
-	}
-
-	if(Strategy[target] == 0)
-		return ( b * idivd[1] + (b - lambd) * idivd[2]) / double(gs+1);
-
-	if(Strategy[target] == 1)
-		return ( idivd[1] + (1-alpha) * idivd[2] - delt * idivd[0] )/ double(gs+1);
-
-	// if Strategy is 2, QC
-	return ( (1+alpha) * idivd[1] + rho * idivd[2] + (m-delt) * idivd[0] ) /double(gs+1);
-
-}
-
-
 double QuasiPGG::centre_game(const int cent){
-	double profit = unit_game(cent,cent);
+	double profit = 0;
+	double pay_table[3][3] = 
+	{{0, b, b-lambd}, {-delt,1,1-alpha}, {m - delt, 1+alpha, rho} };
 	for(int i = 0; i < 4; i++){
-		profit += unit_game(Neighbour[cent][i],cent);
+		profit += pay_table[ Strategy[cent]][Strategy[ Neighbour[cent][i] ]] ;
 	}
 
 	return profit;
@@ -155,7 +134,17 @@ int QuasiPGG::game(bool ptf){
 			continue;
 
 		if(grid && i % gap == 0){
-			1+1; //not implement yet
+			char path2[100];
+			sprintf(path2,"A_%04d_b_%04d_l_%04d_m_%04d_d_%04d_r_%04d_i_%05d.dat", 
+					(int)((alpha + 0.000001) * 100), (int)((b + 0.000001) * 100),
+					(int)((lambd + 0.000001) * 100), (int)((m + 0.000001) * 100),
+					(int)((delt + 0.000001) * 100), (int)((rho + 0.000001) * 100),
+					i);
+			FILE *gfile = fopen(path2,"a+");	
+			for(int j = 0; j < LL;j++){
+				fprintf(gfile, "%d", Strategy[j]);
+
+			}
 		}
 
 		for(int j = 0; j < LL; j++){

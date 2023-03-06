@@ -13,7 +13,7 @@ int main(int argc, char** argv){
 	double m = 0.2;
 
 
-	QuasiPGG gameOBJ(alpha,rho,b,lambd,delt,m);
+	QuasiPGG gameOBJ(alpha,rho,b,lambd,delt,m,false,true);
 	gameOBJ.game(false);
 
 	

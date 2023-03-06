@@ -10,7 +10,7 @@
 #include <sys/types.h>
 
 
-#define K 0.5
+#define K 1.2
 #define L 200
 #define LL (L*L)
 
@@ -34,7 +34,7 @@ public:
 		const double Lam, const double D, const double M,
 		bool Two = false, bool Grid = false);
 	~QuasiPGG();
-	double unit_game(const int cent,const int target);
+	//double unit_game(const int cent,const int target);
 	double centre_game(const int cent);
 	int game(bool ptf);
 };
