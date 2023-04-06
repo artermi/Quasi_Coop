@@ -11,7 +11,7 @@
 
 
 #define K 1.2
-#define L 400
+#define L 800
 #define LL (L*L)
 
 class QuasiPD{
