@@ -93,7 +93,7 @@ int QuasiPD::game(bool ptf){
 
 	double rate[3] = {0.0, 0.0, 0.0};
 	double previous[5][3];
-	int iter = 10001;
+	int iter = 1001;
 	int gap = 100;
 	bool stop_all_0 = true;
 
