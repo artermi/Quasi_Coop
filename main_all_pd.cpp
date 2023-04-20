@@ -33,18 +33,16 @@ int do_once(double a,double b,double l,double m,double d,double r){
 int main(int argc, char** argv){
 	srand(time(NULL));
 
-	double gap = 0.2;
+	double gap = 0.1;
 
+	double d = 0.1;
+	double r = 0.5;
 
 	for(double b = 1.0; b < 2.01; b += gap ){
 		for (double a = 0.0; a < 1.01; a += gap){
 			for(double l = 0.0; l < 1.01; l += gap){
 				for(double m = 0.0; m < 1.01; m += gap){
-					for (double d = 0.0; d < 1.01; d += gap){
-						for (double r = 0.0; r < 1.01; r += gap){
 							do_once(a,b,l,m,d,r);
-						}
-					}
 				}
 			}
 		}
