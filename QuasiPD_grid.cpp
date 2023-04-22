@@ -106,8 +106,8 @@ int QuasiPD_grid::game(bool ptf){
 
 	double rate[3] = {0.0, 0.0, 0.0};
 	double previous[5][3];
-	int iter = 20001;
-	int gap = 2000;
+	int iter = 1001;
+	int gap = 50;
 	bool stop_all_0 = true;
 
 	for(int i = 0; i < iter; i++){
@@ -122,14 +122,14 @@ int QuasiPD_grid::game(bool ptf){
 				fprintf(file, "%06d %.4f %.4f %.4f\n", i, rate[0],rate[1],rate[2]);
 			printf( "%06d %.4f %.4f %.4f\n", i, rate[0],rate[1],rate[2]);
 
-			double pert = 0.02;
+			double pert = 0.005;
 			for(int j = 1; j < 5; j++)
 				for(int k = 0; k < 3; k ++)
 					previous[j-1][k] = previous[j][k];
 			for(int k = 0; k < 3; k++)
 				previous[4][k] = rate[k];
 
-			if(i > iter/4){
+			if(i > iter/2){
 				stop_all_0 = true;
 
 				for(int j = 0; j < 5; j++)
