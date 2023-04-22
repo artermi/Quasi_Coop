@@ -89,8 +89,8 @@ int QuasiPGG::game(bool ptf){
 
 	double rate[3] = {0.0, 0.0, 0.0};
 	double previous[5][3];
-	int iter = 20001;
-	int gap = 500;
+	int iter = 1001;
+	int gap = 10;
 	bool stop_all_0 = true;
 
 	for(int i = 0; i < iter; i++){

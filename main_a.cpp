@@ -1,31 +1,31 @@
-#include "QuasiPGG.h"
+#include "QuasiPD.h"
 #include <unistd.h>
 using namespace std;
 
 
 int main(int argc, char** argv){
 	srand(time(NULL));
-	//double rho = 0.5; //FIX
-	//double b = 1.3;
-	//double lambd = 0.7;
+//	double rho = 0.5; //FIX
+//	double lambd = 0.7;
 
-	double alpha = 0.1;
-	double rho = 0.5; //FIX
-	double b = 1.32;
-	double lambd = 0.7;
+	double alpha = 0.1;//no
+	double rho = 0.5; //FIX no
+	double b = 1.2;
+	double lambd = 0.7;//no
 	double delt = 0.1; //FIX
-	double m = 0.2;
-
+	double m = 0.2;//no
 
 	
-	printf("Now doing QuasiPGG with (a,b,l,d) = (%f,%f,%f,%f)\n",
+	printf("Now doing QuasiPD with (a,b,l,d) = (%f,%f,%f,%f)\n",
 		alpha,b,lambd,delt);
 
-	for(double alpha = 0; alpha < 1.001; alpha += 0.05 ){
+	for(double alpha = 0.0; alpha < 1.01; alpha += 0.02 ){
 		char file_n[100];
-		sprintf(file_n,"b_%04d_A_%04d_m_%04d_L_%04d.dat", 
-			(int)((b + 0.000001) * 100), (int)((alpha + 0.000001) * 1000),
-			(int)((m + 0.000001) * 1000), (int)((lambd + 0.000001) * 1000));
+
+		sprintf(file_n,"A_%04d_b_%04d_l_%04d_m_%04d_d_%04d_r_%04d.dat", 
+		(int)((alpha + 0.000001) * 100), (int)((b + 0.000001) * 100),
+		(int)((lambd + 0.000001) * 100), (int)((m + 0.000001) * 100),
+		(int)((delt + 0.000001) * 100), (int)((rho + 0.000001) * 100));
 
 		FILE *file;
   		file = fopen(file_n, "r");
@@ -40,7 +40,7 @@ int main(int argc, char** argv){
 		file = fopen(file_n, "w");
 		fclose(file);
 
-		QuasiPGG gameOBJ(alpha,rho,b,lambd,delt,m);
+		QuasiPD gameOBJ(alpha,rho,b,lambd,delt,m);
 		gameOBJ.game(true);
 
 	}

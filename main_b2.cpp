@@ -1,4 +1,4 @@
-#include "QuasiPGG.h"
+#include "QuasiPD.h"
 #include <unistd.h>
 using namespace std;
 
@@ -11,15 +11,15 @@ int main(int argc, char** argv){
 	double alpha = 0.1;//no
 	double rho = 0.5; //FIX no
 	double b = 1.2;
-	double lambd = 0.1;//no
-	double delt = 0.0; //FIX
+	double lambd = 0.7;//no
+	double delt = 0.1; //FIX
 	double m = 0.2;//no
 
 	
-	printf("Now doing QuasiPGG with (a,b,l,d) = (%f,%f,%f,%f)\n",
+	printf("Now doing QuasiPD with (a,b,l,d) = (%f,%f,%f,%f)\n",
 		alpha,b,lambd,delt);
 
-	for(double b = 1.0; b < 1.11; b += 0.01 ){
+	for(double b = 1.0; b < 2.01; b += 0.02 ){
 		char file_n[100];
 
 		sprintf(file_n,"A_%04d_b_%04d_l_%04d_m_%04d_d_%04d_r_%04d.dat", 
@@ -40,7 +40,7 @@ int main(int argc, char** argv){
 		file = fopen(file_n, "w");
 		fclose(file);
 
-		QuasiPGG gameOBJ(alpha,rho,b,lambd,delt,m, true);
+		QuasiPD gameOBJ(alpha,rho,b,lambd,delt,m);
 		gameOBJ.game(true);
 
 	}

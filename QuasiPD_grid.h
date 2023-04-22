@@ -11,7 +11,7 @@
 
 
 #define K 1.2
-#define L 400
+#define L 200
 #define LL (L*L)
 
 class QuasiPD_grid{

@@ -106,8 +106,8 @@ int QuasiPD_grid::game(bool ptf){
 
 	double rate[3] = {0.0, 0.0, 0.0};
 	double previous[5][3];
-	int iter = 1001;
-	int gap = 100;
+	int iter = 20001;
+	int gap = 2000;
 	bool stop_all_0 = true;
 
 	for(int i = 0; i < iter; i++){
@@ -169,21 +169,6 @@ int QuasiPD_grid::game(bool ptf){
 			int old_st = Strategy[x];
 
 			int alter = (old_st + 1 + rand() % 2) % 3;
-
-			bool exist = false;
-			for(int k =0; k < 4; k++)
-				if (Strategy[ Neighbour[x][k]] == alter)
-					exist = true;
-
-			if (!exist){
-				alter = (2 * old_st - alter + 3) % 3;
-				for(int k =0; k < 4; k++)
-					if (Strategy[ Neighbour[x][k]] == alter)
-						exist = true;				
-			}
-
-			if (!exist)
-				continue;
 
 			double x_earn = centre_game(x);
 			Strategy[x] = alter;
