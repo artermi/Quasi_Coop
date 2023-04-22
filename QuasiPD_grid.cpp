@@ -170,6 +170,7 @@ int QuasiPD_grid::game(bool ptf){
 
 			int alter = (old_st + 1 + rand() % 2) % 3;
 
+			
 			double x_earn = centre_game(x);
 			Strategy[x] = alter;
 			double y_earn = centre_game(x);
